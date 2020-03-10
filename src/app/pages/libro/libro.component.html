@@ -1,0 +1,83 @@
+<router-outlet></router-outlet>
+
+<div class="example-header">
+
+  <mat-form-field>
+
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Libros">
+  </mat-form-field>
+</div>
+
+
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="id_libro">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id_libro}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="titulo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> titulo </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.titulo}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="categoria">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> categoria </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.categoria}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="descripcion">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> descripcion </mat-header-cell>
+  <mat-cell *matCellDef="let row"> {{row.descripcion}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="editorial">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> editorial </mat-header-cell>
+  <mat-cell *matCellDef="let row"> {{row.editorial}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="idioma">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> idioma </mat-header-cell>
+  <mat-cell *matCellDef="let row"> {{row.idioma}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="paginas">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> paginas </mat-header-cell>
+  <mat-cell *matCellDef="let row"> {{row.paginas}}</mat-cell>
+</ng-container>
+
+
+<ng-container matColumnDef="fech_lanzamiento">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha publicacion </mat-header-cell>
+  <mat-cell *matCellDef="let row"> {{row.fech_lanzamiento}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="autor">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Autor </mat-header-cell>
+  <mat-cell *matCellDef="let row"> {{row.autor.nombres}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="foto">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Foto </mat-header-cell>
+  <mat-cell *matCellDef="let row"> {{row.foto}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="acciones">
+  <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+  <mat-cell *matCellDef="let row">
+    <button mat-icon-button color="primary" (click)="openDialog(row)">
+      <mat-icon>ballot</mat-icon>
+    </button>
+
+  </mat-cell>
+</ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+<button mat-fab color="accent" style="float: right" (click)="openDialog()">
+  <mat-icon>create</mat-icon>
+</button>
+
+

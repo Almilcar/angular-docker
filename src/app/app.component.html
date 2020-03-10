@@ -1,0 +1,46 @@
+<mat-sidenav-container class="all-wrap" fullscreen>
+  <mat-sidenav #sidenav style="width: 200px">
+      <img src="assets/SINTAD.png" width="100" style="margin-left: 20px"><br><br>
+
+      <div *ngFor="let m of autor">
+        <button mat-menu-item  *ngIf="m.nombres !== 'autor'" (click)="sidenav.toggle()" style="cursor: pointer">
+
+            <span>{{m.nombres}}</span>
+          </button>
+          <mat-divider></mat-divider>
+        </div>
+
+      <a href="/autor" Align="center">Autores</a><br><br>
+      <a href="/libro" Align="center">Libros</a>
+      </mat-sidenav>
+
+
+      <div class="page-wrap">
+          <header role="banner">
+              <mat-toolbar color="primary" class="example-toolbar" *ngIf="autor">
+                  <button mat-icon-button (click)="sidenav.toggle()">
+                      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+                      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+                  </button>
+
+                  <h1 class="app-name">ALIRSOFT</h1>
+
+                  <span class="spacer"></span>
+
+
+
+
+              </mat-toolbar>
+          </header>
+
+          <main class="content">
+              <router-outlet>    </router-outlet>
+          </main>
+
+          <footer class="footer">
+              AUTOR: Chavez Sanchez, Almilcar
+          </footer>
+
+      </div>
+
+  </mat-sidenav-container>
