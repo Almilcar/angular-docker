@@ -13,18 +13,18 @@ export class AutorService {
   constructor(private http : HttpClient) { }
 
  listar(){
-  return this.http.get<Autor[]>(this.url);
+  return this.http.get<Autor[]>(this.url+'/listar');
 }
 
 listarPorId(id_autor: number){
-return this.http.get<Autor>(`${this.url}/${id_autor}`);
+return this.http.get<Autor>(`${this.url}/listar/${id_autor}`);
 }
 
 registrar(autor: Autor) {
-  return this.http.post(this.url, autor);
+  return this.http.post(this.url+'/registrar', autor);
 
 }
 modificar(autor: Autor) {
-  return this.http.put(this.url, autor);
+  return this.http.put(this.url+'/modificar', autor);
 }
 }

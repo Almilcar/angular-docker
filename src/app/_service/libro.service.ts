@@ -13,34 +13,34 @@ export class LibroService {
   constructor(private http: HttpClient) { }
 
   listar() {
-    return this.http.get<Libro[]>(this.url);
+    return this.http.get<Libro[]>(this.url+'/listar');
   }
 
   listarPorId(id_libro: number) {
-    return this.http.get(`${this.url}/${id_libro}`, {
+    return this.http.get(`${this.url}/listar/${id_libro}`, {
       responseType: 'blob'
     });
   }
   listarPageable(p: number, s: number) {
-    return this.http.get<any>(`${this.url}/pageable?page=${p}&size=${s}`);
+    return this.http.get<any>(`${this.url}/listar/pageable?page=${p}&size=${s}`);
   }
   registrar(libro: Libro, file?: File) {
     let formdata: FormData = new FormData();
     formdata.append('file', file);
 
-    const libroBlob = new Blob([JSON.stringify(libro)], { type: "application/json" });
+    const libroBlob = new Blob([JSON.stringify(libro)], { type: 'application/json' });
     formdata.append('libro', libroBlob);
 
-    return this.http.post(`${this.url}`, formdata);
+    return this.http.post(`${this.url+'/registrar'}`, formdata);
 }
 modificar(libro: any, file?: File) {
   let formdata: FormData = new FormData();
   formdata.append('file', file);
 
-  const libroBlob = new Blob([JSON.stringify(libro)], { type: "application/json" });
+  const libroBlob = new Blob([JSON.stringify(libro)], { type: 'application/json' });
   formdata.append('libro', libroBlob);
 
-  return this.http.put(`${this.url}`, formdata);
+  return this.http.put(`${this.url+'/modificar'}`, formdata);
 }
 
 }
