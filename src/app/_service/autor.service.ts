@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AutorService {
   autorCambio = new Subject<Autor[]>();
   mensajeCambio = new Subject<string>();
-  url: string = `${environment.HTTPS}/autor`;
+  url: string = `${environment.HTTPS}/api/autor`;
   constructor(private http : HttpClient) { }
 
  listar(){

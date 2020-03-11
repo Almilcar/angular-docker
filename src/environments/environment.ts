@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  HTTPS: 'http://myBalancerCf-1396715319.us-east-1.elb.amazonaws.com'
+  HTTPS: 'https://myBalancerCf-713266697.us-east-1.elb.amazonaws.com'
 };
 
 /*

@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class LibroService {
   libroCambio = new Subject<Libro[]>();
   mensajeCambio = new Subject<string>();
-  url: string = `${environment.HTTPS}/libro`;
+  url: string = `${environment.HTTPS}/api/libro`;
   constructor(private http: HttpClient) { }
 
   listar() {
