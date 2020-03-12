@@ -38,15 +38,8 @@
 </mat-form-field>
 
 
-<button mat-button color="primary"
-          onclick="event.preventDefault();document.getElementById('flArchivo').click()">Seleccionar
-          archivo</button>
-        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display:none;">
-
-        <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" width="50%" height="50%" />
-        <p>{{labelFile}}</p>
 
 <button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
-<button mat-raised-button color="accent" (click)="cancelar()">Cancelar </button>
+
 
 </div>

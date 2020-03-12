@@ -19,10 +19,7 @@ export class LibroDialogoComponent implements OnInit {
   id: number;
   dialogo: boolean;
   libro: Libro;
-  imagenData: any;
-  imagenEstado: boolean = false;
-  selectedFiles: FileList;
-  currentFileUpload: File;
+
   labelFile: string;
   idautorSeleccionado: number;
   autor: Autor[];
@@ -50,9 +47,8 @@ export class LibroDialogoComponent implements OnInit {
       this.libro.autor = this.data.autor;
 
       this.libroService.listarPorId(this.data.id_libro).subscribe(data => {
-        if (data.size > 0) {
-          this.convertir(data);
-        }
+
+
       });
 
     }
@@ -73,39 +69,26 @@ listarautores() {
     this.autor = data;
   });
 }
-convertir(data: any) {
-  let reader = new FileReader();
-  reader.readAsDataURL(data);
-  reader.onloadend = () => {
-  let base64 = reader.result;
-   this.setear(base64);
-  }
 
-}
-setear(x: any) {
-  this.imagenData = this.sanitization.bypassSecurityTrustResourceUrl(x);
-  this.imagenEstado = true;
-}
+
+
+
 operar() {
   let autor = new Autor();
   autor.id_autor = this.idautorSeleccionado;
   this.libro.autor = autor;
 
-  if (this.selectedFiles != null) {
-    this.currentFileUpload = this.selectedFiles.item(0);
-  } else {
-    this.currentFileUpload = new File([""], "blanco");
-  }
+
 
   if (this.libro != null && this.libro.id_libro > 0) {
-    this.libroService.modificar(this.libro, this.currentFileUpload).subscribe(data => {
+    this.libroService.modificar(this.libro).subscribe(data => {
       this.libroService.listar().subscribe(libro  => {
         this.libroService.libroCambio.next(libro );
         this.libroService.mensajeCambio.next("Se modifico");
       });
     });
   } else {
-    this.libroService.registrar(this.libro , this.currentFileUpload).subscribe(data => {
+    this.libroService.registrar(this.libro).subscribe(data => {
       this.libroService.listar().subscribe(libro  => {
         this.libroService.libroCambio.next(libro );
         this.libroService.mensajeCambio.next("Se registro");
@@ -119,10 +102,6 @@ operar() {
 }
 
 
-selectFile(e: any) {
-  this.labelFile = e.target.files[0].name;
-  this.selectedFiles = e.target.files;
-}
 cancelar() {
   this.dialogRef.close();
 }

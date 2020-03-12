@@ -13,11 +13,5 @@ export class Libro{
   paginas: number;
   titulo:string
   autor: Autor;
-  foto: any;
-  isFoto: boolean;
-
-
-
-
 
 }

@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+   production: false,
+   //HOST: 'http://localhost:8080',
   HTTPS: 'https://myBalancerCf-713266697.us-east-1.elb.amazonaws.com'
 };
 
