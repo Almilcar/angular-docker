@@ -5,7 +5,8 @@
 export const environment = {
    production: false,
    //HOST: 'http://localhost:8080',
-  HTTPS: 'https://myBalancerCf-713266697.us-east-1.elb.amazonaws.com'
+ // HTTPS: 'http://myBalancerCf-713266697.us-east-1.elb.amazonaws.com'
+ HTTPS:'https://piqcslkpu7.execute-api.us-east-1.amazonaws.com/prod'
 };
 
 /*
